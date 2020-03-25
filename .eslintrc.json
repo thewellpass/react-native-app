@@ -13,6 +13,7 @@
   "env": {
     "react-native/react-native": true
   },
+  "ignorePatterns": ["android", "ios", "temp.js", "node_modules/"],
   "rules": {
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,

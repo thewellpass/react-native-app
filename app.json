@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "WellPass",
+    "name": "WellPass",
+    "slug": "wellpass",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -24,7 +24,16 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "share.vc.wellpass",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
-    }
-  }
+    },
+    "android": {
+      "package": "share.vc.wellpass",
+      "versionCode": 1
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "WellPass",
+  "name": "WellPass"
 }

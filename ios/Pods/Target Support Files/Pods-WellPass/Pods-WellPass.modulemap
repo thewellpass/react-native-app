@@ -1,0 +1,6 @@
+module Pods_WellPass {
+  umbrella header "Pods-WellPass-umbrella.h"
+
+  export *
+  module * { export * }
+}
