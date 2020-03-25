@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
+import Colors from '../constants/Colors';
 
 const styles = StyleSheet.create({
   header: {
-    color: '#1E1C61',
+    color: Colors.BLACK,
     fontSize: 30,
-    fontWeight: 'medium',
+    fontWeight: '500',
     lineHeight: 41,
     marginBottom: 8,
   },

@@ -1,7 +1,7 @@
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import AsyncStorage from '@react-native-community/async-storage';
 import React, { useEffect, useState } from 'react';
-import { AsyncStorage } from 'react-native';
 import LocationPermissions from '../constants/LocationPermissions';
 
 const UserContext = React.createContext({});

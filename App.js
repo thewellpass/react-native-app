@@ -7,10 +7,12 @@ import LocationPermissions from './constants/LocationPermissions';
 import Permissions from './views/Permissions';
 import SignUp from './views/SignUp';
 import UserContext, { UserProvider } from './contexts/UserContext';
+// import useBleManager from './hooks/useBleManager';
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  // const { deviceIds, scanAndReport } = useBleManager();
   return (
     <UserProvider>
       <UserContext.Consumer>
