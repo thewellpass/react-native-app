@@ -175,7 +175,7 @@
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = QY5XT8P6X2;
+						DevelopmentTeam = MR3R3WZ66Q;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -303,15 +303,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = QY5XT8P6X2;
+				DEVELOPMENT_TEAM = MR3R3WZ66Q;
 				INFOPLIST_FILE = BluetoothScanner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.BluetoothScannerss;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amatemint.bluetoothscanner;
 				PRODUCT_NAME = BluetoothScanner;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -326,15 +327,16 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QY5XT8P6X2;
+				DEVELOPMENT_TEAM = MR3R3WZ66Q;
 				INFOPLIST_FILE = BluetoothScanner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.BluetoothScannerss;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amatemint.bluetoothscanner;
 				PRODUCT_NAME = BluetoothScanner;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
