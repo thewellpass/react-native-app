@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import useBleManager from './hooks/useBleManager';
+import useBleManager from '../hooks/useBleManager';
 
 const App = () => {
   const { deviceIds, startScan, stopScan, isScanning } = useBleManager();

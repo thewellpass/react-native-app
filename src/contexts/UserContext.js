@@ -1,5 +1,5 @@
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
+// import * as Location from 'expo-location';
+// import * as Permissions from 'expo-permissions';
 import AsyncStorage from '@react-native-community/async-storage';
 import React, { useEffect, useState } from 'react';
 import LocationPermissions from '../constants/LocationPermissions';
@@ -38,18 +38,19 @@ export const UserProvider = ({ children }) => {
   };
 
   const checkLocationPermissions = async (newRequest = true) => {
-    const { granted, ios } = newRequest
-      ? await await Permissions.askAsync(Permissions.LOCATION)
-      : await Permissions.getAsync(Permissions.LOCATION);
+    // const { granted, ios } = newRequest
+    //   ? await await Permissions.askAsync(Permissions.LOCATION)
+    //   : await Permissions.getAsync(Permissions.LOCATION);
+    const granted = true;
     let result = granted
       ? LocationPermissions.ALWAYS
       : LocationPermissions.NEVER;
-    if (ios) {
-      const { scope } = ios;
-      if (scope === 'whenInUse') {
-        result = LocationPermissions.ACTIVE_ONLY;
-      }
-    }
+    // if (ios) {
+    //   const { scope } = ios;
+    //   if (scope === 'whenInUse') {
+    //     result = LocationPermissions.ACTIVE_ONLY;
+    //   }
+    // }
     return result;
   };
 

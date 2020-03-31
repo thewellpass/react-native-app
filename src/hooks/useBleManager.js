@@ -11,6 +11,7 @@ const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 const useBleManager = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [deviceIds, setDeviceIds] = useState([]);
+  const [lastId, setLastId] = useState(null);
 
   const startScan = async () => {
     if (isScanning) return;
@@ -22,14 +23,6 @@ const useBleManager = () => {
   const stopScan = async () => {
     await BleManager.stopScan();
     setIsScanning(false);
-  };
-
-  const addDeviceId = device => {
-    console.log('discovered', device);
-    const { id } = device;
-    if (id && !deviceIds.includes(id)) {
-      setDeviceIds([id, ...deviceIds]);
-    }
   };
 
   const reportDeviceIds = () => {
@@ -53,11 +46,20 @@ const useBleManager = () => {
   };
 
   useEffect(() => {
+    if (lastId && !deviceIds.includes(lastId)) {
+      setDeviceIds([lastId, ...deviceIds]);
+    }
+  }, [lastId]);
+
+  useEffect(() => {
     console.log('binding listener', bleManagerEmitter);
     BleManager.start({ showAlert: false });
     const discoverHandler = bleManagerEmitter.addListener(
       'BleManagerDiscoverPeripheral',
-      addDeviceId,
+      device => {
+        const { id } = device;
+        setLastId(id);
+      },
     );
     // let scanInterval = setInterval(() => {
     //   console.log('scanning');
