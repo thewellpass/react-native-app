@@ -39,7 +39,7 @@ const Permissions = ({ navigation }) => {
 
   const handleBluetoothPress = async val => {
     updateUserField('hasEnabledBluetooth', val);
-    navigation.navigate('Home');
+    navigation.navigate('Root');
   };
 
   return (
