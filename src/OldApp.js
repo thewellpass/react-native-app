@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -46,7 +46,7 @@ export default class App extends Component {
   componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
 
-    BleManager.start({showAlert: false});
+    BleManager.start({ showAlert: false });
 
     this.handlerDiscover = bleManagerEmitter.addListener(
       'BleManagerDiscoverPeripheral',
@@ -96,7 +96,7 @@ export default class App extends Component {
         console.log('Connected peripherals: ' + peripheralsArray.length);
       });
     }
-    this.setState({appState: nextAppState});
+    this.setState({ appState: nextAppState });
   }
 
   componentWillUnmount() {
@@ -112,7 +112,7 @@ export default class App extends Component {
     if (peripheral) {
       peripheral.connected = false;
       peripherals.set(peripheral.id, peripheral);
-      this.setState({peripherals});
+      this.setState({ peripherals });
     }
     console.log('Disconnected from ' + data.peripheral);
   }
@@ -129,7 +129,7 @@ export default class App extends Component {
 
   handleStopScan() {
     console.log('Scan is stopped');
-    this.setState({scanning: false});
+    this.setState({ scanning: false });
   }
 
   startScan() {
@@ -137,7 +137,7 @@ export default class App extends Component {
       //this.setState({peripherals: new Map()});
       BleManager.scan([], 3, true).then(results => {
         console.log('Scanning...');
-        this.setState({scanning: true});
+        this.setState({ scanning: true });
       });
     }
   }
@@ -153,7 +153,7 @@ export default class App extends Component {
         var peripheral = results[i];
         peripheral.connected = true;
         peripherals.set(peripheral.id, peripheral);
-        this.setState({peripherals});
+        this.setState({ peripherals });
       }
     });
   }
@@ -165,7 +165,7 @@ export default class App extends Component {
       peripheral.name = 'NO NAME';
     }
     peripherals.set(peripheral.id, peripheral);
-    this.setState({peripherals});
+    this.setState({ peripherals });
   }
 
   test(peripheral) {
@@ -180,7 +180,7 @@ export default class App extends Component {
             if (p) {
               p.connected = true;
               peripherals.set(peripheral.id, p);
-              this.setState({peripherals});
+              this.setState({ peripherals });
             }
             console.log('Connected to ' + peripheral.id);
 
@@ -260,14 +260,15 @@ export default class App extends Component {
     const color = item.connected ? 'green' : '#fff';
     return (
       <TouchableHighlight onPress={() => this.test(item)}>
-        <View style={[styles.row, {backgroundColor: color}]}>
+        <View style={[styles.row, { backgroundColor: color }]}>
           <Text
             style={{
               fontSize: 12,
               textAlign: 'center',
               color: '#333333',
               padding: 10,
-            }}>
+            }}
+          >
             {item.name}
           </Text>
           <Text
@@ -276,7 +277,8 @@ export default class App extends Component {
               textAlign: 'center',
               color: '#333333',
               padding: 2,
-            }}>
+            }}
+          >
             RSSI: {item.rssi}
           </Text>
           <Text
@@ -286,7 +288,8 @@ export default class App extends Component {
               color: '#333333',
               padding: 2,
               paddingBottom: 20,
-            }}>
+            }}
+          >
             {item.id}
           </Text>
         </View>
@@ -302,11 +305,11 @@ export default class App extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
-          <View style={{margin: 10}}>
+          <View style={{ margin: 10 }}>
             <Button title={btnScanTitle} onPress={() => this.startScan()} />
           </View>
 
-          <View style={{margin: 10}}>
+          <View style={{ margin: 10 }}>
             <Button
               title="Retrieve connected peripherals"
               onPress={() => this.retrieveConnected()}
@@ -315,13 +318,13 @@ export default class App extends Component {
 
           <ScrollView style={styles.scroll}>
             {list.length == 0 && (
-              <View style={{flex: 1, margin: 20}}>
-                <Text style={{textAlign: 'center'}}>No peripherals</Text>
+              <View style={{ flex: 1, margin: 20 }}>
+                <Text style={{ textAlign: 'center' }}>No peripherals</Text>
               </View>
             )}
             <FlatList
               data={list}
-              renderItem={({item}) => this.renderItem(item)}
+              renderItem={({ item }) => this.renderItem(item)}
               keyExtractor={item => item.id}
             />
           </ScrollView>
