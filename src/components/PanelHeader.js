@@ -5,14 +5,14 @@ import Colors from '../constants/Colors';
 const styles = StyleSheet.create({
   header: {
     color: Colors.BLACK,
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '500',
-    lineHeight: 24,
-    marginBottom: 24,
+    lineHeight: 27,
+    marginBottom: 8,
   },
 });
 
-const Paragraph = ({ children, style = {}, ...rest }) => {
+const Header = ({ children, style = {}, ...rest }) => {
   return (
     <Text style={[styles.header, style]} {...rest}>
       {children}
@@ -20,4 +20,4 @@ const Paragraph = ({ children, style = {}, ...rest }) => {
   );
 };
 
-export default Paragraph;
+export default Header;

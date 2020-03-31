@@ -1,6 +1,7 @@
 import BleManager from 'react-native-ble-manager';
 import { NativeModules, NativeEventEmitter } from 'react-native';
 import { useEffect, useState } from 'react';
+import api from '../services/api';
 
 const SCAN_INTERVAL = 1000 * 60 * 5; // Five minutes.
 const SCAN_LENGTH = 1000 * 30; // 30 seconds.
@@ -25,7 +26,7 @@ const useBleManager = () => {
     setIsScanning(false);
   };
 
-  const reportDeviceIds = () => {
+  const reportDeviceIds = async () => {
     const result = {
       scannedAt: new Date(),
       deviceIds,
@@ -33,7 +34,7 @@ const useBleManager = () => {
     // At this point we'd probably post the result to the backend. If that
     // errors out, we'd add this to localStorage and queue it up for future
     // posting.
-    console.log(result);
+    await api.reportDeviceIds(payload);
     setDeviceIds([]);
   };
 

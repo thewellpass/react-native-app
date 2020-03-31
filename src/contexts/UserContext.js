@@ -7,10 +7,17 @@ import LocationPermissions from '../constants/LocationPermissions';
 const UserContext = React.createContext({});
 
 const defaultUserState = {
+  // Permissions
   hasAcceptedPrivacyPolicy: false,
   hasAcceptedTOS: false,
   hasEnabledBluetooth: false,
   hasEnabledLocationSharing: LocationPermissions.NEVER,
+
+  // Status
+  lastCheckIn: null,
+  locations: [],
+  riskEvents: [],
+  safeDays: 16,
 };
 
 const STORAGE_KEY = 'USER';
@@ -60,6 +67,7 @@ export const UserProvider = ({ children }) => {
       if (cachedUser) {
         const locationPermission = await checkLocationPermissions(false);
         const newUserState = {
+          ...defaultUserState,
           ...cachedUser,
           hasEnabledLocationSharing: locationPermission,
         };

@@ -3,8 +3,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import About from './views/About';
-import Home from './views/Home';
+import Base from './views/Base';
 // import LocationPermissions from './constants/LocationPermissions';
 import Permissions from './views/Permissions';
 import Privacy from './views/Privacy';
@@ -24,7 +25,7 @@ const Stack = createStackNavigator();
 const Root = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="WellPass" component={Base} />
       <Drawer.Screen name="Scanner Test***" component={Test} />
       <Drawer.Screen name="Profile & Settings" component={Profile} />
       <Drawer.Screen name="My Locations" component={Profile} />
@@ -42,36 +43,38 @@ const App = () => {
   // const { deviceIds, scanAndReport } = useBleManager();
   return (
     <NavigationContainer>
-      <UserProvider>
-        <UserContext.Consumer>
-          {({ hasInitialized, user }) => {
-            if (!hasInitialized) {
-              return false;
-            }
-            let initialRoute = 'Sign Up';
-            // if (user.hasAcceptedPrivacyPolicy && user.hasAcceptedTOS) {
-            //   initialRoute = 'Permissions';
+      <SafeAreaProvider>
+        <UserProvider>
+          <UserContext.Consumer>
+            {({ hasInitialized, user }) => {
+              if (!hasInitialized) {
+                return false;
+              }
+              let initialRoute = 'Sign Up';
+              // if (user.hasAcceptedPrivacyPolicy && user.hasAcceptedTOS) {
+              //   initialRoute = 'Permissions';
 
-            //   if (
-            //     user.hasEnabledBluetooth &&
-            //     user.hasEnabledLocationSharing !== LocationPermissions.NEVER
-            //   ) {
-            //     initialRoute = 'Root';
-            //   }
-            // }
-            return (
-              <Stack.Navigator
-                initialRouteName={initialRoute}
-                headerMode="none"
-              >
-                <Stack.Screen name="Sign Up" component={SignUp} />
-                <Stack.Screen name="Permissions" component={Permissions} />
-                <Stack.Screen name="Root" component={Root} />
-              </Stack.Navigator>
-            );
-          }}
-        </UserContext.Consumer>
-      </UserProvider>
+              //   if (
+              //     user.hasEnabledBluetooth &&
+              //     user.hasEnabledLocationSharing !== LocationPermissions.NEVER
+              //   ) {
+              //     initialRoute = 'Root';
+              //   }
+              // }
+              return (
+                <Stack.Navigator
+                  initialRouteName={initialRoute}
+                  headerMode="none"
+                >
+                  <Stack.Screen name="Sign Up" component={SignUp} />
+                  <Stack.Screen name="Permissions" component={Permissions} />
+                  <Stack.Screen name="Root" component={Root} />
+                </Stack.Navigator>
+              );
+            }}
+          </UserContext.Consumer>
+        </UserProvider>
+      </SafeAreaProvider>
     </NavigationContainer>
   );
 };

@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Header = ({ children, ...rest }) => {
+const Header = ({ children, style = {}, ...rest }) => {
   return (
-    <Text style={styles.header} {...rest}>
+    <Text style={[styles.header, style]} {...rest}>
       {children}
     </Text>
   );
