@@ -1,21 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
+import ContentLayout from '../components/ContentLayout';
+import PaddedView from '../components/PaddedView';
 
 const About = () => {
   return (
-    <View style={styles.container}>
-      <Text>About</Text>
-    </View>
+    <ContentLayout>
+      <ScrollView style={styles.container}>
+        <PaddedView>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            laoreet est quis felis commodo congue. In consectetur sed nulla eu
+            pulvinar. Donec felis sem, porta vel nibh vel, iaculis rutrum leo.
+          </Text>
+        </PaddedView>
+      </ScrollView>
+    </ContentLayout>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-    width: window.width,
-    height: window.height,
-    padding: 16,
+    paddingVertical: 16,
   },
 });
 
