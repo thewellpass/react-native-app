@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Alert, Platform, StyleSheet, Button, Text, View } from 'react-native';
 import Header from '../components/Header';
 import LocationPermissions from '../constants/LocationPermissions';
+import LogoLayout from '../components/LogoLayout';
 import Paragraph from '../components/Paragraph';
 import UserContext from '../contexts/UserContext';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -43,79 +44,81 @@ const Permissions = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Header>Proximity to Protect&nbsp;&amp;&nbsp;Prevent</Header>
-      <Paragraph>
-        WellPass uses technology in your phone to understand your proximity to
-        people in order to protect you and prevent the spread of viruses such as
-        COVID-19.
-      </Paragraph>
-      <Paragraph>
-        Whether you’re there now or were last week, know when you cross paths
-        with risk.
-      </Paragraph>
-      <View style={styles.controls}>
-        {/* Icons go here */}
-        {currentStep === Steps.LOCATION && (
-          <>
-            <Text style={styles.subheader}>Enable location sharing</Text>
-            <View style={styles.button}>
-              <Button
-                title="Only While Using the App"
-                onPress={() => handleLocationPress()}
-              />
-            </View>
-            <View style={styles.button}>
-              <Button
-                title="Always Allow"
-                onPress={() => handleLocationPress()}
-              />
-            </View>
-            <View style={styles.button}>
-              <Button
-                title="Don't Allow"
-                onPress={() => handleLocationPress()}
-              />
-            </View>
-          </>
-        )}
-        {currentStep === Steps.BLUETOOTH && (
-          <>
-            <Text style={styles.subheader}>Enable Bluetooth</Text>
-            <View style={styles.button}>
-              <Button
-                title="Allow"
-                onPress={() => handleBluetoothPress(true)}
-              />
-            </View>
-            <View style={styles.button}>
-              <Button
-                title="Don't Allow"
-                onPress={() => handleBluetoothPress(false)}
-              />
-            </View>
-          </>
-        )}
-        <View style={styles.stepToggles}>
-          <TouchableOpacity
-            style={
-              currentStep === Steps.LOCATION
-                ? styles.stepToggleActive
-                : styles.stepToggle
-            }
-            onPress={() => setCurrentStep(Steps.LOCATION)}
-          />
-          <TouchableOpacity
-            style={
-              currentStep === Steps.BLUETOOTH
-                ? styles.stepToggleActive
-                : styles.stepToggle
-            }
-            onPress={() => setCurrentStep(Steps.BLUETOOTH)}
-          />
+    <LogoLayout showMenu={false}>
+      <View style={styles.container}>
+        <Header>Proximity to Protect&nbsp;&amp;&nbsp;Prevent</Header>
+        <Paragraph>
+          WellPass uses technology in your phone to understand your proximity to
+          people in order to protect you and prevent the spread of viruses such
+          as COVID-19.
+        </Paragraph>
+        <Paragraph>
+          Whether you’re there now or were last week, know when you cross paths
+          with risk.
+        </Paragraph>
+        <View style={styles.controls}>
+          {/* Icons go here */}
+          {currentStep === Steps.LOCATION && (
+            <>
+              <Text style={styles.subheader}>Enable location sharing</Text>
+              <View style={styles.button}>
+                <Button
+                  title="Only While Using the App"
+                  onPress={() => handleLocationPress()}
+                />
+              </View>
+              <View style={styles.button}>
+                <Button
+                  title="Always Allow"
+                  onPress={() => handleLocationPress()}
+                />
+              </View>
+              <View style={styles.button}>
+                <Button
+                  title="Don't Allow"
+                  onPress={() => handleLocationPress()}
+                />
+              </View>
+            </>
+          )}
+          {currentStep === Steps.BLUETOOTH && (
+            <>
+              <Text style={styles.subheader}>Enable Bluetooth</Text>
+              <View style={styles.button}>
+                <Button
+                  title="Allow"
+                  onPress={() => handleBluetoothPress(true)}
+                />
+              </View>
+              <View style={styles.button}>
+                <Button
+                  title="Don't Allow"
+                  onPress={() => handleBluetoothPress(false)}
+                />
+              </View>
+            </>
+          )}
+          <View style={styles.stepToggles}>
+            <TouchableOpacity
+              style={
+                currentStep === Steps.LOCATION
+                  ? styles.stepToggleActive
+                  : styles.stepToggle
+              }
+              onPress={() => setCurrentStep(Steps.LOCATION)}
+            />
+            <TouchableOpacity
+              style={
+                currentStep === Steps.BLUETOOTH
+                  ? styles.stepToggleActive
+                  : styles.stepToggle
+              }
+              onPress={() => setCurrentStep(Steps.BLUETOOTH)}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </LogoLayout>
   );
 };
 

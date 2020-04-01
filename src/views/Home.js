@@ -50,7 +50,6 @@ const App = () => {
   useEffect(() => {
     fetchStatistics();
   }, []);
-  console.log('stats', statistics);
 
   return (
     <ScrollView style={styles.container}>
