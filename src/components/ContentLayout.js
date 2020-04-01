@@ -9,6 +9,7 @@ const LogoLayout = ({ children, showMenu = true, showBack = true, title }) => {
   const insets = useSafeArea();
   const navigation = useNavigation();
   const route = useRoute();
+
   return (
     <View style={styles.container}>
       <View style={[styles.header, { paddingTop: insets.top + 16 }]}>

@@ -16,7 +16,7 @@ import abbreviateNumber from '../util/abbreviateNumber';
 import useEpidemicStatistics from '../hooks/useEpidemicStatistics';
 
 const formatNumber = number =>
-  Number.isNaN(parseFloat(number)) ? '--' : abbreviateNumber(number);
+  Number.isNaN(parseInt(number, 10)) ? '--' : abbreviateNumber(number);
 
 const App = () => {
   const { updateUserField, user } = useContext(UserContext);
@@ -72,7 +72,7 @@ const App = () => {
         <Panel style={styles.userStats}>
           {userStats.map(({ label, value }) => (
             <View key={label} style={styles.smallStatistic}>
-              <Text style={{ fontSize: 10, fontWeight: 'bold' }}>{value}</Text>
+              <Text style={{ fontWeight: 'bold' }}>{value}</Text>
               <Text style={{ fontSize: 10 }}>{label}</Text>
             </View>
           ))}
